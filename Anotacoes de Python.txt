@@ -1,0 +1,1014 @@
+ANOTAÇÕES PYTHON
+
+31/01/2019
+
+
+site com documentação / dicas / exemplos de PYTHON
+
+docs.python.org
+ >> Library Reference -->> indicação do instrutor Fabio Kun da USP
+
+Site "oficial": 
+https://www.python.org/
+
+Grupo de discussão de Python no Brasil: 
+https://python.org.br/
+
+
+
+************************************
+VARIÁVEIS
+************************************
+
+A linguagem Python é fracamente tipada, isto é, uma variável x fica com o tipo do valor que ela recebe.
+Assim, se for executada a atribuição x = 1, x fica com o tipo inteiro;
+
+----------------------------------------------------------------------
+Atribuição de lista de valores / Trocar o valor entre duas variáveis 
+
+Para atribuir uma lista de valores para uma lista de variáveis, de uma só vez:
+
+>>> a, b = 10, 20
+>>> a
+10
+>>> b
+20
+
+Para trocar o valor existente entre duas variáveis:
+
+>>> a, b = b, a
+>>> a
+20
+>>> b
+10
+>>> 
+
+
+************************************
+COMENTÁRIOS
+************************************
+
+Usa-se '#' para que o restante da linha apartir do '#' seja um comentário.
+Se uitlizar no começo da linha, toda a linha será um comentário
+
+Usa-se """ ... """ para que tudo que estiver entre o abre/fecha aspas seja um comentário.
+Inclusive várias linhas.
+Usa-se dessa forma para fazer comentário em bloco.
+
+************************************
+INPUT
+************************************
+
+Espera a entrada de informação por parte do usuário:
+
+Ex:
+
+idade = int(input("Informe sua idade: "))
+
+tamanho_medio = float(input("Entre o tamanho medio de palavra: "))
+
+------------------------------
+CONVERSORES DE TIPOS
+------------------------------
+
+Para converter um tipo para inteiro usar as funções int(), para ponto flutuante float(), para complexo complex(). 
+Essas funções devem ser usadas especialmente na entrada de dados, input() – que dá sempre um tipo str de cadeia de caracteres.
+
+************************************
+RAIZ QUADRADA
+************************************
+Para obter a raiz quadrada de um valor:
+
+Primeiro fazer o import da biblioteca math:
+
+import math
+
+depois usar o comando:
+math.sqrt(9)
+
+************************************
+OPERADORES ARITMÉTICOS
+************************************
+-----------
+DIVISÃO
+-----------
+
+>> 11 / 5 # divisão em ponto flutuante
+2.2
+
+>> 11 // 5 # divisão inteira
+2>
+
+>> 11 % 5 # resto da divisão
+1>
+
+
+************************************
+DEBUG / DEPURADOR / PASSO A PASSO
+************************************
+
+para executar um programa com debug / depurador / passo a passo
+ir no Python Shell (onde o programa é executado), abrir um programa, 
+clicar com o botão direito em uma linha do programa que desejar e selecionar "Set Breakpoint".
+Em seguida executar o programa em "Run - Run Módule" (F5) e a execução do programa irá iniciar com debug.
+
+Selecionar na janela "Debug Control" as opções:
+- Source (para exibir no programa qual linha de código está sendo executada)
+- Globals
+
+Selecionar na janela "Debug Control" o modo de execução que deseja: Go, Step, Over
+- GO - executa tudo até o fim
+- STEP - executa passo a passo inclusive dentro de funções
+- OVER - executa tudo o que está na linha atual (não entra em funções)
+
+********************************************************
+TAMANHO DE UMA VARIÁVEL / TAMANHO DE UMA LISTA - LEN
+********************************************************
+
+A função 'LEN' retorna a quantidade de caracteres de uma variável do tipo STRING, não funciona com tipo numérico.
+Se a variável for do tipo LISTA, TUPLA OU DICIONÁRIO, 'LEN' retorna o seu número de elementos.
+
+Ex. 1. Obter a quantidade de caracteres de uma palavra:
+qtde_caracteres_palavra = len(palavra)
+
+Ex. 2. Obter a quantidade de elementos de uma lista:
+qtde_caracteres_lista = len(lista_nomes)
+
+************************************
+TRABALHANDO COM STRINGS
+************************************
+
+***------------------------------------------------------------------------***
+OBTER POSIÇÃO DE UMA STRING
+***------------------------------------------------------------------------***
+-----------------------------------------------------------------------------
+Para obter índices/pedaços de uma string - fatiamento / fatias de string
+-----------------------------------------------------------------------------
+
+Para se obter uma posição específica de uma string usa-se chaves [].
+A posição inicia-se sempre em zero.
+
+Ex:
+cad='Esta é uma cadeia'
+
+cad[0]
+Resultado: 'E'
+
+cad[5:10]
+Resultado: 'é uma'
+
+cad[10:] 
+obtem o resultado iniciando na posição 10 até o fim da string
+Resultado: ' cadeia'
+
+cad[-1] 
+obtem o resultado da última posição da string. -1 = última posição, -2 = penúltima posição e assim por diante
+Resultado: 'a'
+
+Conceito 1 - para os índices de fatiamento:
+quando o índice possui mais de um elemento:
+o 1º índice indica o elemento inicial, começando em 0; 
+o 2º índice indica o elemento final, começando em 1.
+
+Conceito 2 - para os índices de fatiamento:
+o primeiro índice é sempre a posição inicial que será obtida da lista, começando em 0; 
+e o segundo índice é a primeira posição da lista (começando em 0) que não será obtida, 
+ou seja, deve-se informar a posição final desejada + 1, ou seja, será obtida a posição: ("índice 2" - 1).
+
+***------------------------------------------------------------------------***
+CONCANETAR STRINGS
+***------------------------------------------------------------------------***
+
+Para concatenar / juntar duas ou mais strings, utilizar o sinal de '+'.
+Esse tipo de concatenação não deixa espaço entre as strings.
+
+Ex: 
+
+>>> nome1 = 'Flavio'
+>>> nome2 = 'Augusto'
+>>> nome1 + nome2
+'FlavioAugusto'
+>>> 
+
+***------------------------------------------------------------------------***
+FUNÇÕES COM STRINGS
+***------------------------------------------------------------------------***
+
+Função UPPER - converter string para maiúsculo, deixando a string original inalterada.
+
+>>> nome = "Flavio"
+>>> nome
+'Flavio'
+>>> nome.upper()
+'FLAVIO'
+
+---------------------------------
+
+Função LOWER - Converter string para minúsculo, deixando a string original inalterada.
+
+>>> nome = "Flavio"
+>>> nome
+'Flavio'
+>>> nome.lower()
+'flavio'
+
+---------------------------------
+
+Função CAPITALIZE - deixar maiúsculo o primeiro caractere da string, as demais em minúsculo.
+deixando a string original inalterada.
+
+Obs. Quando a string iniciar com espaço, o próprio espaço será considerado o primeiro caractere e será deixado como "maiúsculo",
+e próximo caractere, que pode ser uma letra, será minúsculo.
+
+Ex. 1:
+>>> nome = "Flavio Augusto Maria"
+>>> nome
+'Flavio Augusto Maria'
+>>> nome.capitalize()
+'Flavio augusto maria'
+>>> nome
+'Flavio Augusto Maria'
+
+Ex. 2:
+>>> nome = "FLAVIO AUGUSTO MARIA"
+>>> nome
+'FLAVIO AUGUSTO MARIA'
+>>> nome.capitalize()
+'Flavio augusto maria'
+>>> nome
+'FLAVIO AUGUSTO MARIA'
+
+---------------------------------
+
+Função STRIP - remover espaços no início e fim da string , deixando a string original inalterada.
+
+>>> nome = " Flavio  "
+>>> nome
+' Flavio  '
+>>> nome.strip()
+'Flavio'
+>>> nome
+' Flavio  '
+
+---------------------------------
+
+Função COUNT - conta quantas vezes um caractere informado aparece em uma string,
+Diferenciando maiúsculas de minúsculas.
+
+>>> nome = "Flavio Augusto Maria"
+>>> nome.count("a")
+3
+>>> nome.count("A")
+1
+
+Diferenciando maiúsculas de minúsculas:
+>>> nome2 = nome.lower()
+>>> nome2
+'flavio augusto maria'
+>>> nome2.count("a")
+4
+
+---------------------------------
+
+Função REPLACE - substituir um conjunto de string / parte de uma frase por outra.
+
+>>> "Meu nome é Jõao".replace("Jõao", "Flavio")
+'Meu nome é Flavio'
+
+---------------------------------
+
+Função CENTER - centralizar uma string.
+a função recebe como parâmetro o tamanho do string desejado
+
+>>> nome = "Flavio Augusto Maria"
+>>> nome
+'Flavio Augusto Maria'
+>>> nome.capitalize().center(50)
+'               Flavio augusto maria               '
+
+---------------------------------
+
+Função FIND - encontrar posição de um caracter / palavra na string.
+quando não encontrar o parâmetro pesquisado, retorna -1
+
+>>> frase = "Minha terra tem palmeiras onde gorgeia o mar"
+>>> frase
+'Minha terra tem palmeiras onde gorgeia o mar'
+>>> frase.find("m")
+14
+>>> frase.find("ma")
+41
+>>> frase.find("bom")
+-1
+
+---------------------------------
+
+Função ORD - retorna o código unicode de um caractere alfanumérico.
+
+>>> ord("a")
+97
+>>> ord("A")
+65
+>>> ord("1")
+49
+>>> ord("!")
+33
+
+
+
+************************************
+DFININDO FUNÇÃO//FUNCAO/FUNÇÕES
+************************************
+
+def soma (a, b, C):
+    return a + b + C
+
+def multiplica(a, b, c):
+    return a * b * c
+
+--------------------------------------------------
+
+Função com PARÂMETRO OPCIONAL
+
+pode-se definir uma função com parâmetro opcional, da seguinte forma:
+
+def pagamento_semanal(valor_hora, num_horas = 40);
+    return valor_hora * num_horas
+
+para chamar a função, pode-se ou não informar o valor do parâmetro opcional:
+
+salario_semanal = pagamento_semanal(100, 36)
+ou
+salario_semanal = pagamento_semanal(100)
+
+Obs.
+Os parâmetros opcionais de uma função, devem sempre ser os últimos na ordem da declaração
+dos parâmetros da função, caso contrário dará erro de compilação.
+
+---------------------
+FUNÇÃO MAIN():
+---------------------
+
+Ao definir uma função chamada MAIN():
+essa sempre será a função inicial do programa, onde o mesmo começa a ser executado.
+
+Ex:
+
+def main():
+    comando1
+    comando2
+
+para chamar a função main(), deve-ser fazer a chamada depois/após/abaixo da declaração de todas as funções do programa.
+
+Ex: main()
+
+************************************
+COMANDO 'IN'
+************************************
+
+    if  a in ('a', 'A', 'e', 'E', 'i', 'I', 'o', 'O', 'u', 'U'):        
+        return True
+    else:
+        return False
+
+
+*****************************************
+PULAR LINHA / IMPRIMIR LINHA EM BRANCO
+*****************************************
+Para quebrar linha de um texto no comando print usar \n
+
+Ex:
+    print("Bem vindo ao jogo do NIM! Escolha:\n")
+    print("1 - para jogar uma partida isolada")
+    print("2 - para jogar um campeonato")
+
+Resultado:
+Bem vindo ao jogo do NIM! Escolha:
+
+1 - para jogar uma partida isolada
+2 - para jogar um campeonato
+
+
+12/02/2019
+
+*****************************************
+ESTRUTURA DO COMANDO PRINT
+*****************************************
+
+a estrutura do comando print é essa:
+
+print("value, ..., sep=' ', end='\n', file=sys.stdout, flush=False)
+
+o campo/atributo "end='\n'" é o responsável por fazer que depois de cada comando "print" seja pulada uma linha.
+esse atributo pode ser trocado por '\t' (tab) ou outro finalizador que desejar que seja feito ao final do comando print.
+
+Ex: para fazer que seja inserido um espaço ao final do comando print ao invés de pular uma linha:
+
+print("teste", end=" ")
+print("teste", end=", ")
+
+
+*****************************************
+LAÇO DE REPETIÇÃO "WHILE"
+*****************************************
+
+i = 1
+
+    while i < 10:
+        print(i)
+	i = i + 1
+
+
+
+*****************************************
+LAÇO DE REPETIÇÃO "FOR"
+*****************************************
+
+frutas_exoticas = ["jaboticaba", "cupuaçu", "graviola"]
+
+for fruta in frutas_exoticas:
+    print("Eu gosto de " + fruta)
+
+Resultado:
+    Eu gosto de jaboticaba
+    Eu gosto de cupuaçu
+    Eu gosto de graviola
+
+**-------------------**
+FUNÇÃO RANGE
+**-------------------**
+
+Ex. 1:
+
+Obtem todas as posições de zero até o valor passado para a função "range".
+
+for i in range(5):
+    print (i)
+
+Resultado:
+0, 1, 2, 3, 4 (será exibido um valor em cada linha)
+
+---------
+
+Ex. 2:
+
+Obtem todas as posições entre o primeiro e segundo valor passados para a função "range"
+
+for i in range(10, 15):
+    print(i)
+
+Resultado:
+10, 11, 12, 13, 14 (será exibido um valor em cada linha)
+
+---------
+
+Ex. 3:
+
+Obtem todas as posições entre o primeiro e segundo valor, variando o índice "i" de acordo com o terceiro valor,
+passados para a função "range"
+
+for i in range(0, 15, 3):
+    print(i)
+
+Resultado:
+0, 3, 6, 9, 12 (será exibido um valor em cada linha)
+
+---------
+
+Ex. 4 (MESMA ESTRUTURA DO EXEMPLO 3):
+
+Obtem todas as posições entre o primeiro e segundo valor, variando o índice "i" de acordo com o terceiro valor,
+passados para a função "range"
+
+pares = range(0, 40, 2)
+
+for i in pares:
+    print(i)
+
+Resultado:
+0, 2, 4, 6, 8...todos os números pares até 40 (será exibido um valor em cada linha)
+
+---------
+
+Ex. 5
+
+numeros = [0, 1, 2, 3, 4, 5]
+
+for i in range(len(numeros)):
+    print numeros[i]
+
+Resultado:
+0, 1, 2, 3, 4, 5 (será exibido um valor em cada linha)
+
+************************************
+TUPLA
+************************************
+
+Exemplo: Tup = (A, 5, 3.14, 'bla'); Tup -> (1, 5, 3.14, 'bla'). (Para o valor de A ver o item 3 das observações.)
+
+n-upla vazia: ()
+
+Indexação: Tup[0] -> 1; Tup[1:3] -> (5, 3.14); Tup[2:] -> ((3.14, 'bla'); 2*Tup -> (1, 5, 3.14, 'bla', 1, 5, 3.14, 'bla'). 
+
+É inválido atribuir um valor a um elemento de uma tupla: Tup[1] = 10
+
+
+************************************
+UTILIZANDO LISTAS
+************************************
+
+- Criar lista vazia:
+        lista_vazia = []
+
+- Criar lista de palavras:
+        lista_palavras = ["palavra1", "frase teste 2", "palavra3"]
+
+- Criar lista mista de palavras e números:
+        lista_mista = ["palavra1", 2.89, "palavra3", 58]
+
+
+- Criar lista de numeros:
+        lista_raiz = [raiz1, raiz2, raiz3]
+      OU
+        lista_raiz = [8, 50, 180]
+
+- Ordenar Lista:
+        lista_raiz.sort()
+
+- Obter valores em posições específicas da lista:
+        print("as raízes da equação são", lista_raiz[0], "e", lista_raiz[1])
+
+*** Obs: Lembrando que o índice de uma lista inicia sempre do zero. ***
+
+- Obter a quantidade de elementos de uma lista:
+        len(lista_raiz)
+
+- Obter os tipos dos elementos de uma lista:
+type(lista_raiz[0])
+type(lista_raiz[1])
+
+**---------------------------------------------------------**
+Adicionar/concatenar elementos a uma lista - Função APPEND
+**---------------------------------------------------------**
+
+- Adicionar/concatenar elementos a uma lista (APPEND):
+        lista_raiz = [8, 50, 180]
+
+        lista_raiz.append(35)
+
+        lista_raiz = [8, 50, 180, 35]
+
+irá adicionar o elemento na última posição da lista.
+Dessa forma a lista será alterada.
+
+**---------------------------------------------------------**
+Excluir elementos de uma lista - Função DEL
+**---------------------------------------------------------**
+
+O comando "DEL" exclui a posição informada da lista, alterando a quantidade de elementos dessa lista:
+
+Ex. 1. Excluindo um elemento da lista:
+
+lista1 = ["a", "b", "c"]
+del lista1[1]
+
+R: 
+lista1
+['a', 'c']
+
+Ex. 2. Excluindo um trecho da lista:
+
+lista1 = ["a", "b", "c", "d", "e", "f"]
+
+del lista1[1:4]
+
+R:
+
+lista1
+['a', 'e', 'f']
+
+------------------------------------------------------------
+
+- Alterar uma posição específica da lista:
+
+Antes:
+        lista_raiz = [8, 50, 180, 35]
+
+Alterando valor:
+	lista_raiz[2] = 599
+
+Depois:
+        lista_raiz = [8, 50, 599, 35]
+
+
+*** Obs: Lembrando que o índice de uma lista inicia sempre do zero. ***
+
+--------------------------------------
+
+ao utilizar um índice com valor negativo em uma lista em Python,
+o índice irá percorrer a lista de trás para frente.
+
+Ex: 
+
+ao utilizar índices negativos na lista_raiz = [8, 50, 180]
+
+lista_raiz[-1]
+R: 180
+
+lista_raiz[-2]
+R: 50
+
+lista_raiz[-3]
+R: 8
+
+
+**--------------------------------------------------------------------**
+Para obter índices/pedaços de uma lista - fatiamento / fatias de listas
+**--------------------------------------------------------------------**
+
+lista_primos = [2, 3, 5, 7, 11, 13, 17, 19]
+
+Ex. 1:
+lista_primos[1:2]
+
+Resultado: [3]
+
+Ex. 2:
+lista_primos[2:7]
+
+Resultado: [5, 7, 11, 13, 17]
+
+Conceito 1 - para os índices de fatiamento:
+quando o índice possui mais de um elemento:
+o 1º índice indica o elemento inicial, começando em 0; 
+o 2º índice indica o elemento final, começando em 1.
+
+Conceito 2 - para os índices de fatiamento:
+o primeiro parâmetro é sempre a posição inicial que será obtida da lista, 
+e o segundo parâmetro é a primeira posição da lista que não será obtida, ou seja, deve-se informar a posição final desejada + 1.
+
+**---------------------------------**
+Copiar / Copiando listas
+**---------------------------------**
+
+quando existirem duas listas e uma lista receber o valor da outra:
+
+Ex:
+
+lista1 = ["a", "b", "c"]
+lista2 = lista1
+
+ao fazer isso, sempre que qualquer uma das duas listas tiver uma posição específica alterada, a outra também terá.
+
+Ex:
+lista2[0] = "m"
+
+Resultado:
+lista1 ['m', 'b', 'c']
+lista2 ['m', 'b', 'c']
+
+Porém, se alguma das listas receber um valor novo para a lista inteira, e não para uma posição específica,
+a outra lista não será alterada.
+
+Ex:
+lista1 = ["r", "s", "t"]
+lista2 = lista1
+lista1 = ["w"]
+
+Resultado:
+lista1 ['w']
+lista2 ['r', 's', 't']
+
+**-------------------------------------**
+Clonar / clonando listas - Método CLONE
+**-------------------------------------**
+
+para fazer com que uma lista receba o valor de outra, sendo as duas independentes entre si,
+deve-se utilizaro método CLONE:
+
+lista2 = clone(lista1)
+
+OU DE UMA FORMA MAIS FÁCIL QUE FAZ A MESMA COISA:
+
+lista2 = lista1[:]
+
+dessa forma também será criado um clone da lista1, atribuindo para a lista2, sendo as duas independentes entre si.
+
+**------------------------------------------------------------**
+Pertinência a uma lista / saber se um valor está um uma lista
+**------------------------------------------------------------**
+
+lista1 = ["a", "b", "c"]
+lista2 = ["d", "e", "f"]
+
+"b" in lista1
+R: True
+
+"b" in lista2
+R: False
+
+"f" in lista1
+R: False
+
+"f" in lista2
+R: True
+
+**------------------------------------------------------------**
+Juntar / Concatenar listas
+**------------------------------------------------------------**
+
+Para juntar / concatenar listas, basta utilizar o sinal de mais "+", da seguinte forma:
+o sinal de mais "+" irá sempre juntar a segunda lista ao final da primeira.
+
+Ex. 1:
+
+lista1 = ["a", "b", "c"]
+lista2 = ["d", "e", "f"]
+
+print(lista1 + lista2)
+
+R:
+['a', 'b', 'c', 'd', 'e', 'f']
+
+Ex. 2:
+
+lista3 = lista1 + ["m", "n"]
+
+R: lista3
+['a', 'b', 'c', 'm', 'n']
+
+**------------------------------------------------------------**
+Repetir / Repetição de listas
+**------------------------------------------------------------**
+
+lista1 = ["a", "b", "c"]
+
+lista2 = lista1 * 3
+
+R:
+lista2
+['a', 'b', 'c', 'a', 'b', 'c', 'a', 'b', 'c']
+
+************************************
+COMANDO "IS"
+************************************
+
+O comando "IS", verifica se duas variáveis apontam para o mesmo endereço de memória.
+
+Isso acontece quando duas variáveis possuem o mesmo valor.
+
+Ex:
+
+>>> a = 1
+>>> b = 1
+>>> a is b
+True
+>>> a == b
+True
+
+Porém, quando duas listas possuem o mesmo valor, elas não apontam para o mesmo endereço de memória,
+Cada lista aponta para um endereço de memória, e esse endereço de memória é que irá apontar para o mesmo valor na memória.
+
+Ex:
+
+>>> c = [1, 2]
+>>> d = [1, 2]
+>>> c is d
+False
+>>> c == d
+True
+
+************************************
+DICIONÁRIO
+************************************
+
+Exemplo: Dic = {5:10, 3:'bla', 'ble':A, A:8}; Dic ->{5: 10, 3: 'bla', 'ble': 1, 1: 8}
+
+Indexação: Dic[5] -> 10; Dic[3] -> 'bla'; Dic['ble'] -> 1; Dic[C] -> 'bla'; DIC[B] -> 8
+
+Obtenção de todos os índices (keys): Dic.keys() -> dict_keys([1, 'ble', 3, 5])
+
+Obtenção de todos os valores: Dic.values() -> dict_values([8, 1, 'bla', 10])
+
+dict_keys e dict_values não podem ser indexadas. Para se trabalhar com todos os índices ou os valores, 
+pode-se transformá-los em listas e depois trabalhar com elas:
+
+Ex. 1:
+  L = [x for x in Dic.keys()]; L -> [5, 3, 'ble', 1]
+
+  L = [x for x in Dic.values()]; L -> [10, 'bla', 1, 8]
+
+
+Ex. 2:
+
+lista_chaves = []
+lista_valores = []
+
+for i in dic.keys():
+    lista_chaves.append(i)
+
+for i in dic.values():
+    lista_valores.append(i)
+
+************************************
+VETORES E MATRIZES
+************************************
+
+Ao contrário de quase todas as outras linguagens de programação, Python não tem o tipo array, 
+pois os valores de variáveis podem ocupar tamanhos diversos. 
+Para representar matrizes, usam-se listas, já que as mesmas podem ser indexadas como se fossem matrizes. 
+Em outras linguagens, a declaração de um array produz a inicialização de seus valores, isto é, 
+a declaração do array faz com que todos seus elementos passem a existir. Mas o mesmo não ocorre com as listas de Python; 
+assim, é preciso adicinonar cada elemento novo, pela ordem. 
+
+Exemplos:
+
+Para acessar uma matriz, usa-se a informação de [LINHA] [COLUNA] da posição desejada.
+
+matriz = [[1, 2], [3, 4]]
+matriz[0][0]
+
+Resultado: 1
+
+---------------------------------------------------------------------------------------------------------------
+Para criar uma matriz (com mais de uma linha), deve-ser criar duas listas, uma será a matriz propriamente dita,
+ou seja, um conjunto de listas, e a outra será os registros que serão adicionados um por vez na matriz.
+Sendo assim, cria-se uma lista de informações, e adiciona essa lista a uma nova lista, quantas vezes desejar,
+conforme abaixo, onde a lista "matriz[]", recebe várias vezes a matriz "linha[]", tornando a lista "matriz[]" em uma matriz (conjunto de listas).
+
+Ex:
+
+	matriz = []                             # cria lista vazia
+
+	for i in range(num_linas):		#cria a linha i
+		linha = []                      #cria lista vazia
+		for j in range(num_colunas):
+			valor = int(input("Digite o elemento da linha " + str(i) + " e coluna " + str(j) + ": "))
+			linha.append(valor)
+
+		matriz.append(linha)            #adiciona linha à matriz
+
+	return matriz
+
+---------------------------------------------------------------------------------------------------------------
+
+
+1. Para definir um vetor de 5 elementos, inicializando com valores 0 (poderia ser outro qualquer, como I ou uma expressão): 
+V=[0 for I in range(4)]; V -> [0, 0, 0, 0]; note-se que V[4] não existe e não pode receber algum valor, 
+como V[4]=0 ou V[4]=[0]. Para defini-lo: V=V+[0]. Para varrer todo um vetor de tamanho variável, use len(V) -> 4 
+
+2. Para definir uma matriz bidimensional, constrói-se uma lista de listas: 
+M=[[1, 2], [3, 4]]; M -> [[1, 2], [3, 4]]; M[1][1] -> 4; M[0][1] -> 2; M[1][0] -> 3. 
+Inicialização, com vários valores, de uma matriz com 3 linhas e 4 colunas: 
+M = [[I+J+1 for I in range(2)] for J in range(3)]; M -> [[1, 2], [2, 3], [3, 4]]; M[2][1] -> 4
+Para dimensões maiores, basta estender as receitas.
+
+
+3. Para varrer todos elementos e exibir os seus valores:
+M=[[1, 2], [3, 4]]
+for I in M:
+   for E in I:
+      print (E)
+Resultado:
+1
+2
+3
+4
+
+4. Para gerar uma matriz com valores crescentes:
+M=[]
+for I in range(2):
+   M=M+[-1]
+M ->
+[-1, -1]
+for I in range(2):
+   M[I]=[J,J+1]
+   J=J+2
+M ->
+[-1, -1]
+for I in range(2):
+   M[I]=[J,J+1]
+   J=J+2
+M ->
+[[1, 2], [3, 4]]
+
+5. Para obter linhas:
+for I in M:
+   I ->
+[1, 2]
+[3, 4]
+
+6. Para obter colunas:
+J=0
+J =[I[J] for I in [M]
+J ->
+[1, 3]
+
+8. Módulo para uso de matrizes
+O módulo NumPy permite o uso de vetores e matrizes como se fosse nas linguagens tradicionais. 
+Supondo que ele está instalado, para ativá-lo e dar-lhe o nome interno de np dá-se import NumPy as np. 
+Ver as referências para detalhes como usá-lo.
+
+******************************************
+TRATAMENTO DE ERRO COM COMANDO ASSERT
+******************************************
+
+def pagamento_semanal(valor_hora, num_horas = 40):
+    assert valor_hora >= 0 and num_horas > 0
+    return valor_hora * num_horas
+
+pagamento_semanal(100, 0)
+
+Resultado:
+
+Ao executar conforme acima, o programa gera um erro conforme abaixo:
+
+    assert valor_hora >= 0 and num_horas > 0
+AssertionError
+
+
+******************************************
+IMPORTAR PROGRAMAS / MÓDULOS
+******************************************
+
+para utilizar funções que estejam em outros programas, deve-se importar o programa que contem a função desejada, da seguinte forma:
+
+import nome_mais_curto
+
+considerando que dentro do módulo "nome_mais_curto" tem uma função chamada "exibe_nome", pode-se acessar essa função:
+
+nome_mais_curto.exibe_nome()
+
+-----------------------------------------------
+
+para saber se um programa está sendo executado através de um import ou não, fazer o seguinte:
+
+if __name__ == "__main__":
+   print("programa executado sem ser por import")
+else:
+   print("programa executado através de import")
+
+Quando o campo "__name__" conter o nome "__main__", significa que ele está sendo executado sem ser por import.
+
+Quando o campo "__name__" conter o próprio nome do módulo que está sendo executado, por exemplo: nome_mais_curto,
+significa que ele está sendo executado por import de outro módulo.
+
+******************************************
+OBJETOS / CLASSSES
+******************************************
+***------------------***
+Criar CLASSES
+***------------------***
+
+Ex. 1
+
+1.1.
+Criar uma classe sem atributos (vazia):
+
+>>> class Carro:
+	pass
+
+1.2
+Instanciar uma classe (criar um objeto apartir de uma classe declarada):
+
+meu_carro = Carro()
+
+1.3
+Criar atributos para o objeto instaciado:
+
+>>> meu_carro.ano = 1970
+>>> meu_carro.cor = 'vermelha'
+>>> meu_carro.modelo = 'fusca'
+
+>>> meu_carro.ano
+1970
+>>> meu_carro.cor
+'vermelha'
+>>> meu_carro.modelo
+'fusca'
+
+-----------
+
+Ex. 2
+
+2.1
+Criar uma classe com atributos:
+
+
+>>> class Carro:
+	def __init__(self, modelo, ano, cor):
+		self.modelo = modelo
+		self.ano = ano
+		self.cor = cor
+
+2.2
+Instanciar uma classe (criar um objeto apartir de uma classe declarada):
+
+meu_carro = Carro('Ferrari', 1980, 'vermelha')
+
+>>> meu_carro.modelo
+'Ferrari'
+>>> meu_carro.ano
+1980
+>>> meu_carro.cor
+'vermelha'
